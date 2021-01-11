@@ -48,11 +48,11 @@ var createProduct = function (product, index) {
 	// build the h4 part of 'block'
 	block.appendChild(createBlock("h4", product.name));
 	// /!\ should add the figure of the product... does not work yet... /!\ 
-	block.appendChild(createFigureBlock(product));
+	// block.appendChild(createFigureBlock(product));
+	block.appendChild(createBlock("img", product.image, "imgproduct"));
 	// build and add the div.description part of 'block' 
 	block.appendChild(createBlock("div", product.description, "description"));
 	// build and add the div.price part of 'block'
-	block.appendChild(createBlock("img", product.image, "imgproduct"));
 	block.appendChild(createBlock("div", product.prix, "prix"));
 	// build and add control div block to product element
 	block.appendChild(createOrderControlBlock(index));
