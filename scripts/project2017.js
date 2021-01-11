@@ -10,8 +10,6 @@ const inputIdKey = "qte";
 // the total cost of selected products 
 var total = 0;
 
-
-
 // function called when page is loaded, it performs initializations 
 var init = function () {
 	createShop();
@@ -49,14 +47,12 @@ var createProduct = function (product, index) {
 	block.id = index + "-" + productIdKey;
 	// build the h4 part of 'block'
 	block.appendChild(createBlock("h4", product.name));
-	
 	// /!\ should add the figure of the product... does not work yet... /!\ 
 	block.appendChild(createFigureBlock(product));
-
 	// build and add the div.description part of 'block' 
 	block.appendChild(createBlock("div", product.description, "description"));
 	// build and add the div.price part of 'block'
-	block.appendChild(createBlock("img", product.image, "img"));
+	block.appendChild(createBlock("img", product.image, "imgproduct"));
 	block.appendChild(createBlock("div", product.prix, "prix"));
 	// build and add control div block to product element
 	block.appendChild(createOrderControlBlock(index));
@@ -74,7 +70,10 @@ var createBlock = function (tag, content, cssClass) {
 	if (cssClass != undefined) {
 		element.className =  cssClass;
 	}
-	element.innerHTML = content;
+	if(tag === 'img')
+		element.src = content
+	else
+		element.innerHTML = content;
 	return element;
 }
 
