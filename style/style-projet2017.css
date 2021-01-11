@@ -64,25 +64,27 @@ div.produit {
 	margin : 4px 4px;
 }
 
-.imgproduct {
-	width:75%
-}
+
 
 div.produit figure, div.produit div.description {
 	box-shadow : 0px 0px 4px 2px grey inset;
 	border-radius : 4px;	
 }
 
-div.produit figure {
-	margin : auto;	
-	width : 75%;
-	height : 120px;
-	text-align : center;
-}
-div.produit figure img {
-	margin : 5px;
-	height : 93%;
-}
+/*div.produit figure {*/
+/*	margin : auto;	*/
+/*	width : 75%;*/
+/*	height : 120px;*/
+/*	text-align : center;*/
+/*}*/
+
+.imgproduct {
+	 width:75%
+ }
+/*div.produit figure img {*/
+/*	margin : 5px;*/
+/*	height : 93%;*/
+/*}*/
 
 div.produit h4 {
 	color : rgb(60,60,60);
@@ -97,20 +99,20 @@ div.produit div.description, div.controle  {
 	display : inline-block;
 }
 div.produit div.description {
-	height : 50px;
-	width : 108px;
+	height : 15%;
+	width : 50%;
 	text-align : left;
-	font-size : 10px;
+	font-size : 20px;
 	background-color: white;
 	margin : 2px 2px 2px 2px;
-	padding : 1px 15px;
+	padding : 3px 15px;
 }
 	
 div.produit div.prix {
 	position : absolute;
 	top : 35px;
 	right : 15px;
-	font-size : 14px;
+	font-size : 16px;
 	display : inline-block;
 	background-color : rgb(200,0,0);
 	color : white;

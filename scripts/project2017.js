@@ -98,14 +98,14 @@ var createOrderControlBlock = function (index) {
 	input.max = MAX_QTY.toString();
 	// add input to control as its child
 	control.appendChild(input);
-	
+
 	// create order button
 	var button = document.createElement("button");
 	button.className = 'commander';
 	button.id = index + "-" + orderIdKey;
 	// add control to control as its child
 	control.appendChild(button);
-	
+
 	// the built control div node is returned
 	return control;
 }
@@ -122,4 +122,17 @@ var createFigureBlock = function (product) {
 	// this is absolutely not the correct answer !
 	// TODO 
 	return createBlock("figure", "");
+}
+
+
+// BARRE DE RECHERCHE
+
+function rechercherArticle(libelle) {
+	var articlesCorrespondants = [];
+	catalog.forEach(produit => {
+		if (produit["name"].toUpperCase().includes(libelle.toUpperCase())) {
+			articlesCorrespondants.push(produit);
+		}
+	});
+	generateItemList(articlesCorrespondants);
 }
