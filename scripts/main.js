@@ -102,19 +102,53 @@ function addToCart(id, quantite){
 
 }
 
-function deleteProductFromCart(id) {
-    const index = achats.indexOf(element => element.product.id === id)
-    achats.splice(index, 1);
-    document.getElementById("achat-" + id).remove();
-    getTotalPrice();
+function LignePanier (name, qte, prix)
+{
+    this.name = name;
+    this.qteArticle = qte;
+    this.prixArticle = prix;
+    this.ajouterQte = function(qte)
+    {
+        this.qteArticle += qte;
+    }
+    this.getPrixLigne = function()
+    {
+        var resultat = this.prixArticle * this.qteArticle;
+        return resultat;
+    }
+    this.getName = function()
+    {
+        return this.name;
+    }
 }
 
-function montant() {
-    let sum = 0;
-    achats.forEach(achat => {
-        sum += achat.quantite * parseInt(achat.product["prix"]);
-    });
-    document.getElementById('total-price').innerHTML = sum;
+function Panier()
+{
+    this.liste = [];
+    this.ajouterArticle = function(name, qte, prix)
+    {
+        var index = this.getArticle(name);
+        if (index === -1) this.liste.push(new LignePanier(name, qte, prix));
+        else this.liste[index].ajouterQte(qte);
+    }
+    this.getPrixPanier = function()
+    {
+        var total = 0;
+        for(var i = 0 ; i < this.liste.length ; i++)
+            total += this.liste[i].getPrixLigne();
+        return total;
+    }
+    this.getArticle = function(code)
+    {
+        for(var i = 0 ; i <this.liste.length ; i++)
+            if (name == this.liste[i].getName()) return i;
+        return -1;
+    }
+    this.deleteArticle = function(code)
+    {
+        var index = this.getArticle(code);
+        if (index > -1) this.liste.splice(index, 1);
+    }
 }
 
 // BARRE DE RECHERCHE

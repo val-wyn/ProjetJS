@@ -72,7 +72,7 @@ var catalog = [
 
     {
         "id" : 11,
-        "name" : "Ecran benQ #2",
+        "name" : "Ecran benQ #3",
         "description" : "Ecran d'une très grande qualité",
         "image" : "data/images/EcranbenQ3.jpg",
         "prix" : "256"},
