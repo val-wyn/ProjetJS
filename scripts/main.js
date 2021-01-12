@@ -36,7 +36,7 @@ function createProduct(product, index) {
 
 function createBlock(tag, content, cssClass) {
     var element = document.createElement(tag);
-    if (cssClass != undefined) {
+    if (cssClass !== undefined) {
         element.className = cssClass;
     }
     if (tag === 'img')
@@ -66,12 +66,14 @@ function createOrderControlBlock(index, product) {
     button.addEventListener ("click", function() {
         alert("Article ajouté au panier");
     });
+    button.onclick = function(){
+        updateButton(input)
+    }
     return control;
 }
 
 function updateButton(input) {
     if (input.value === 0) {
-        input.value = null;
         let id = input.id.substring(9);
         let button = document.getElementById("produit-" + id);
         disableInput(button);
@@ -85,7 +87,7 @@ function updateButton(input) {
 function enableButton(quantite, id, button) {
     button.removeAttribute('disabled');
     button.onclick = function () {
-        addToCart(id, parseInt(quantite));
+        ajouterArticle(name, parseInt(quantite), prix);
         const input = document.getElementById("quantite-" + id);
         input.value = null;
     };
@@ -95,7 +97,7 @@ function enableButton(quantite, id, button) {
 function disableButton(button) {
     button.removeAttribute("onclick");
     button.setAttribute("disabled", "");
-    button.setAttribute('style', 'opacity:0.15');
+    button.setAttribute('style', 'opacity:0.25');
 }
 
 function addToCart(id, quantite){
@@ -113,8 +115,7 @@ function LignePanier (name, qte, prix)
     }
     this.getPrixLigne = function()
     {
-        var resultat = this.prixArticle * this.qteArticle;
-        return resultat;
+        return this.prixArticle * this.qteArticle;
     }
     this.getName = function()
     {
@@ -138,10 +139,10 @@ function Panier()
             total += this.liste[i].getPrixLigne();
         return total;
     }
-    this.getArticle = function(code)
+    this.getArticle = function(name)
     {
         for(var i = 0 ; i <this.liste.length ; i++)
-            if (name == this.liste[i].getName()) return i;
+            if (name === this.liste[i].getName()) return i;
         return -1;
     }
     this.deleteArticle = function(code)
